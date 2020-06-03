@@ -1,0 +1,198 @@
+Task Implementation:
+Menu Implementation:
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+using namespace std;
+
+int main ()
+{
+    string choice;
+    while ( true )
+    {
+        cout << "1) Enter 1 to Add a user" << endl << "2) Enter 2 to Delete a user" << endl << "3) Enter 3 to Add a group" << endl << "4) Enter 4 to Delete a group" << endl << "5) Enter 5 to change information of a user" << endl << "6) Enter 6 to change the account information of a user" << endl << "7) Enter 7 to Add a specific user to a specific group" << endl << "8) Enter 0 to Exit" << endl << "Enter your choice here : ";
+        cin >> choice;
+	for (int i = 0; i < choice.length(); i++)
+  	{
+	if (isdigit(choice[i]) == false)
+	{
+            	break;
+	}	
+	}
+        if (choice == "0" )
+        {
+       cout << " Program has ended successfully" << endl;
+            break;
+        }
+        else if ( choice == "1")
+        {
+            string username,str;
+	    cout << "Please enter the username you want to add here : ";
+	    cin >> username;
+	    str = "useradd " + username;
+	    const char *command = str.c_str();
+	    system(command);
+            cout << endl;
+        }
+
+        else if ( choice == "2")
+        {
+        string username,str;
+	    cout << "Please enter the username you want to delete here : ";
+	    cin >> username;
+	    str = "userdel " + username;
+	    const char *command = str.c_str();
+	    system(command);
+        cout << endl;
+        }
+
+        else if ( choice == "3")
+        {
+        string groupname,str;
+	    cout << "Please enter the Group name you want to add here : ";
+	    cin >> groupname;
+	    str = "groupadd " + groupname;
+	    const char *command = str.c_str();
+	    system(command);
+            cout << endl;
+        }
+
+        else if ( choice == "4")
+        {
+        string groupname,str;
+	    cout << "Please enter the Group name you want to delete here : ";
+	    cin >> groupname;
+	    str = "groupdel " + groupname;
+	    const char *command = str.c_str();
+	    system(command);
+            cout << endl;
+        }
+
+        else if ( choice == "5")
+        {
+	    int choice2;
+        cout << "1) Enter 1 to change the username" << endl << "2) Enter 2 to change a user password" << endl << "3) Enter 3 to change general user information" << endl << "4) Enter anything else to get back" << endl << "Enter your choice here : ";
+	    cin >> choice2;
+	    if ( choice2 == 1 )
+	    {
+            string oldN,newN,str;
+            cout << "Enter your old username here : ";
+            cin >> oldN;
+            cout << endl;
+            cout << "Enter your new username here : ";
+            cin >> newN;
+            cout << endl;
+            str = "usermod -l " + newN + " "  + oldN;
+            const char *command = str.c_str();
+	            system(command);
+	    }
+	    else if ( choice2 == 2 )
+	    {
+            string username,str;
+            cout << "Enter your username here : ";
+            cin >> username;
+            cout << endl;
+            str = "passwd " + username;
+            const char *command = str.c_str();
+            system(command);
+	    }
+	    else if ( choice2 == 3 )
+	    {
+            string username,str;
+            cout << "Enter your username here : ";
+            cin >> username;
+            cout << endl;
+            str = "chfn " + username;
+            const char *command = str.c_str();
+	            system(command);
+	    }
+	    else
+        {
+	           cout << "incorrect data entered";
+	            cout << endl;
+        }
+        }
+        else if ( choice == "6")
+        {
+        cout << "1) Enter 1 To change password Expiration date" << endl << "2) Enter 2 to lock user" << endl << "3) Enter 3 to unlock user" << endl << "4) Enter 4 if you don't want to give a user login shell" << endl << "5) Enter 5 if you want to give a user login shell" << endl << "6) Enter anything else to get back" << endl << "Enter your choice here : ";
+	    int choice2;
+	    cin >> choice2;
+	    if ( choice2 == 1 )
+	    {
+            string username,ExDate,str;
+            cout << "Enter your username here : ";
+            cin >> username;
+            cout << endl;
+            cout << "Enter the new Expiration date here : ";
+            cin >> ExDate;
+            str = "sudo usermod -e " + ExDate + " "  + username;
+            const char *command = str.c_str();
+	            system(command);
+	    }
+	    else if ( choice2 == 2 )
+	    {
+            string username,str;
+            cout << "Enter your username here : ";
+            cin >> username;
+            cout << endl;
+            str = "usermod -L " + username;
+            const char *command = str.c_str();
+	            system(command);
+	    }
+	    else if ( choice2 == 3 )
+	    {
+            string username,str;
+            cout << "Enter your username here : ";
+            cin >> username;
+            cout << endl;
+            str = "Usermod -U " + username;
+            const char *command = str.c_str();
+	            system(command);
+	    }
+	    else if ( choice2 == 4 )
+	    {
+            string username,str;
+            cout << "Enter your username here : ";
+            cin >> username;
+            cout << endl;
+            str = "usermod -s /sbin/nologin/ " + username;
+            const char *command = str.c_str();
+	             system(command);
+	    }
+	    else if ( choice2 == 5 )
+	    {
+            string username,str;
+            cout << "Enter your username here : ";
+            cin >> username;
+            cout << endl;
+            str = "usermod -s /bin/bash " + username;
+            const char *command = str.c_str();
+	            system(command);
+	    }
+	    else
+        {
+	          cout << "incorrect data entered";
+	          cout << endl;
+        }
+        }
+        else if ( choice == "7")
+        {
+            string username,groupname,str;
+            cout << "Plase enter the user name you want to add him to a specific group : ";
+            cin >> username;
+            cout << endl;
+            cout << "Plase enter the group name you want to add this user to : ";
+            cin >> groupname;
+            str = "usermod -G" + groupname + " " + username;
+            const char *command = str.c_str();
+            system(command);
+            cout << endl;
+        }
+	else
+    {
+	cout << "incorrect data entered";
+	cout << endl;
+    }
+    }
+}
+

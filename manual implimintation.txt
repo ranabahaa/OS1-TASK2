@@ -1,0 +1,16 @@
+Manual Implementation:
+echo "	This is Task 2 Manual :-
+NAME :
+	OSTask.cpp
+DESCRIPTION :
+	It allows you to add and delete users, add and delete groups, change specific information of users as their username, password, full name, their phone number and their other things, 
+	It Allows the super user to change information of certain accounts as password expiration date, you can lock and unlock specific users and whether you want to give a user a login shell or not.
+OPTIONS:
+	    0 to Exit from the program.
+	    1 TO add a user.
+	    2 TO delete a user.
+	    3 TO add a group.
+	    4 TO delete a group.
+	    5 TO change general information of users.
+	    6 TO change account settings of users.
+	    7 TO assign specific user to specific group."
